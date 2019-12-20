@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+</head>
+<body>
+<div>
+
+  <div class="container mt-3">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">{{ title }}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarNav" aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% for _, city in departures.items() %}
+          <li class="nav-item active">
+            <a class="nav-link" href="#">{{ city }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+
+
+    <h1 class="display-5 mt-4">Летим {{ departure }}</h1>
+    {% if tours_info %}
+    <p class="mb-4">Найдено {{ tours_info.number_of_tours }} туров, от 26 000 до
+      84 600 и от 4 ночей до 15 ночей</p>
+    {% elif context.tours_info.number_of_tours == 1%}
+    <p class="mb-4">Найден {{ tours_info.number_of_tours }} тур, {{
+      tour_info.max_price }}р на {{ tour_info.max_number_of_nights }} ночи./p>
+    {% else %}
+    <p>Подходящие туры не найдены.</p>
+    {% endif %}
+      <!-- HERO -->
+
+
+      <!-- CARDS -->
+
+      <div class="row mt-5">
+        {% for tour in tours_for_departure %}
+          <div class="col-4">
+            <div class="card mb-3">
+              {% if tour.picture %}
+              <img src="{{ tour.picture }}"
+                   class="card-img-top img-fluid">
+              {% else %}
+                <img src="https://place-hold.it/300x200"
+                   class="card-img-top img-fluid">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ tour.title }}</h5>
+                <p class="card-text">{{ tour.description}}</p>
+                <a href="" class="btn btn-sm btn-primary">Подробнее</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+</body>
+</html>

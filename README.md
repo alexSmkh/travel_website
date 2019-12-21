@@ -14,7 +14,7 @@
 
 Установить зависимости
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 Запустить
 ```bash

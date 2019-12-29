@@ -22,9 +22,13 @@
         <img src="https://place-hold.it/300x200" class="card-img-top img-fluid">
         {% endif %}
         <div class="card-body">
-          <h5 class="card-title">{{ tour.title }}</h5>
+          <h5 class="card-title"><span style="font-weight: bold">{{ tour.country }}:  {{ tour.title }}</span></h5>
           <p class="card-text">{{ tour.description }}</p>
-          <a href="/tours/{{ tour.id }}" class="btn btn-sm btn-primary">Подробнее</a>
+          <div class="row">
+            <div><span class="ml-3" style="font-weight: bold">{{ tour.date}}, {{ tour.nights}} ночей, {{ tour.price}} руб</span></div>
+            <div style="flex: 1; text-align: right"><span class ="pr-3" style="font-weight: bold">{{ tour.stars }} ⭐</span></div>
+          </div>
+          <a href="/tours/{{ tour.id }}" class="btn btn-sm btn-primary mt-3">Подробнее</a>
         </div>
       </div>
     </div>

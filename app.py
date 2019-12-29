@@ -50,9 +50,9 @@ def direction(departure):
     return render_template('from.html', **context)
 
 
-@app.route('/tours/<tour_id>')
+@app.route('/tours/<int:tour_id>')
 def tours(tour_id):
-    tour = [tour for tour in data.TOURS if tour['id'] == int(tour_id)]
+    tour = [tour for tour in data.TOURS if tour['id'] == tour_id]
 
     if not tour:
         abort(404)

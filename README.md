@@ -4,11 +4,11 @@
 
 
 * ## Главная
-![Главная страница](sample_pics/1.png)
+![Главная страница](sample_pics/index_page.png)
 * ## Направление 
-![Направление](sample_pics/2.png)
+![Направление](sample_pics/from_page.png)
 * ## Тур
-![Тур](sample_pics/3.png)
+![Тур](sample_pics/tours_page.png)
 
 ## Как запустить
 

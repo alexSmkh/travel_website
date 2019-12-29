@@ -4,7 +4,11 @@
 
   <!-- HERO -->
 
-  <p class="lead mt-3">{{ tour.country }} {{ departures[tour.departure] }} {{ tour.nights }} ночей</p>
+  <h1 class="display-2 my-3" style="font-weight: bold; font-family: monospace">{{ tour.title }} {{ tour.stars }}⭐</h1>
+  <div class="row mb-4 ml-2">
+    <div class="col-2 btn btn-outline-success mr-2">{{ tour.country }}</div>
+    <div class="col-2 btn btn-outline-success">{{ tour.nights}} ночей</div>
+  </div>
   {% if tour.picture %}
     <img src="{{ tour.picture }}" class="w-75" alt="">
   {% else %}

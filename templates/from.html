@@ -2,16 +2,19 @@
 
 {% block content %}
 
-  <h1 class="display-5 mt-4">Летим {{ departure }}</h1>
-  {% if tours_info %}
-    <p class="mb-4">Найдено {{ tours_info.number_of_tours }} туров, от 26 000 до
-    84 600 и от 4 ночей до 15 ночей</p>
-  {% elif context.tours_info.number_of_tours == 1%}
-    <p class="mb-4">Найден {{ tours_info.number_of_tours }} тур, {{
-    tour_info.max_price }}р на {{ tour_info.max_number_of_nights }} ночи./p>
-  {% else %}
-    <p>Подходящие туры не найдены.</p>
-  {% endif %}
+<h1 class="display-5 mt-4">Летим из <span style="font-weight: bold">{{ departure }}</span></h1>
+{% if tours_info.number_of_tours == 1 %}
+  <p class="mb-4"><span style="font-weight: bold">Найден {{ tours_info.number_of_tours }} тур,</span> {{
+    tour_info.max_price }}р на {{ tour_info.max_number_of_nights }} ночей.</p>
+{% elif 2 <= tours_info.number_of_tours <= 4 %}
+<p><span style="font-weight: bold">Найдено {{ tours_info.number_of_tours }} тура,</span> от {{ tours_info.min_price}} до
+    {{ tours_info.max_price}} и от {{ tours_info.min_number_of_nights }} ночей до {{ tours_info.max_number_of_nights }} ночей</p>
+{% elif tour_info %}
+<p class="mb-4"><span style="font-weight: bold">Найдено {{ tours_info.number_of_tours }} туров,</span> от {{ tours_info.min_price}} до
+    {{ tours_info.max_price}} и от {{ tours_info.min_number_of_nights }} ночей до {{ tours_info.max_number_of_nights }} ночей</p>
+{% else %}
+  <p>Подходящие туры не найдены.</p>
+{% endif %}
 
     <!-- CARDS -->
 

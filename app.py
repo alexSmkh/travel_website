@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 import data
 
 app = Flask(__name__)
@@ -23,7 +23,7 @@ def main():
 @app.route('/from/<departure>')
 def direction(departure):
     if not data.DEPARTURES.get(departure):
-        return "Ничего не нашлось! Вот неудача, отправляйтесь на главную!"
+        abort(404)
 
     tours_for_departure = list(
         filter(
@@ -55,7 +55,7 @@ def tours(tour_id):
     tour = [tour for tour in data.TOURS if tour['id'] == int(tour_id)]
 
     if not tour:
-        return "Ничего не нашлось! Вот неудача, отправляйтесь на главную!"
+        abort(404)
 
     context = {
         'tour': tour[0],

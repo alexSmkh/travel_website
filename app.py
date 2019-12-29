@@ -43,7 +43,7 @@ def direction(departure):
         tours_info = {}
 
     context = {
-        'departure': data.DEPARTURES.get(departure),
+        'departure': data.DEPARTURES.get(departure).split(' ')[1],
         'tours_for_departure': tours_for_departure,
         'tours_info': tours_info
     }

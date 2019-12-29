@@ -2,15 +2,15 @@
 
 {% block content %}
 
-    <!-- HERO -->
+  <!-- HERO -->
 
-    <p class="lead">{{ tour.country }} {{ departures[tour.departure] }} {{ tour.nights }} ночей</p>
-    {% if tour.picture %}
+  <p class="lead mt-3">{{ tour.country }} {{ departures[tour.departure] }} {{ tour.nights }} ночей</p>
+  {% if tour.picture %}
     <img src="{{ tour.picture }}" class="w-75" alt="">
-    {% else %}
+  {% else %}
     <img src="https://place-hold.it/300x200" class="w-75" alt="">
-    {% endif %}
-    <p class="my-4 w-75">{{ tour.description }}</p>
-    <a href="" class="btn btn-success btn-lg">Купить тур за {{ tour.price }}</a>
+  {% endif %}
+  <p class="my-4 w-75">{{ tour.description }}</p>
+  <a href="#" class="btn btn-success btn-lg">Купить тур за {{ tour.price }}</a>
 
 {% endblock %}

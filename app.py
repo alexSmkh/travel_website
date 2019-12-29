@@ -17,7 +17,7 @@ def main():
 
 @app.route('/from/<departure>')
 def direction(departure):
-    if data.DEPARTURES.get(departure):
+    if not data.DEPARTURES.get(departure):
         return "Ничего не нашлось! Вот неудача, отправляйтесь на главную!"
 
     tours_for_departure = list(
@@ -49,9 +49,9 @@ def direction(departure):
     return render_template('from.html', **context)
 
 
-@app.route('/tours/<id>')
-def tours(id):
-    tour = [tour for tour in data.TOURS if tour['id'] == int(id)]
+@app.route('/tours/<tour_id>')
+def tours(tour_id):
+    tour = [tour for tour in data.TOURS if tour['id'] == int(tour_id)]
 
     if not tour:
         return "Ничего не нашлось! Вот неудача, отправляйтесь на главную!"

@@ -52,13 +52,13 @@ def direction(departure):
 
 @app.route('/tours/<int:tour_id>')
 def tours(tour_id):
-    tour = [tour for tour in data.TOURS if tour['id'] == tour_id]
+    tour = next((tour for tour in data.TOURS if tour['id'] == tour_id), None)
 
-    if not tour:
+    if tour is None:
         abort(404)
 
     context = {
-        'tour': tour[0],
+        'tour': tour,
     }
 
     return render_template('tours.html', **context)

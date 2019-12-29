@@ -4,15 +4,20 @@ import data
 app = Flask(__name__)
 
 
-@app.route('/')
-def main():
-    context = {
+@app.context_processor
+def context_processor():
+    return {
         'tours': data.TOURS,
         'title': data.TITLE,
         'subtitle': data.SUBTITLE,
-        'departures': data.DEPARTURES
+        'description': data.DESCRIPTION,
+        'departures': data.DEPARTURES,
     }
-    return render_template('index.html', **context)
+
+
+@app.route('/')
+def main():
+    return render_template('index.html')
 
 
 @app.route('/from/<departure>')
@@ -39,10 +44,6 @@ def direction(departure):
 
     context = {
         'departure': data.DEPARTURES.get(departure),
-        'departures': data.DEPARTURES,
-        'tours': data.TOURS,
-        'title': data.TITLE,
-        'subtitle': data.SUBTITLE,
         'tours_for_departure': tours_for_departure,
         'tours_info': tours_info
     }
@@ -58,8 +59,8 @@ def tours(tour_id):
 
     context = {
         'tour': tour[0],
-        'departures': data.DEPARTURES
     }
+
     return render_template('tours.html', **context)
 
 
